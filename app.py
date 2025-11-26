@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 import plotly.express as px
 
 # Configuration de la page 
@@ -62,14 +60,16 @@ nb_clients = df_filtred["Customer ID"].count()
 # Le chiffres d'affaires
 CA = df_filtred["Monetary"].sum()
 
-# Panier moyen
+# Initialisation des variables
 average_buying = 0
+average_recence = 0
+
 if nb_clients > 0 :
+    # Panier moyen
     average_buying = CA / nb_clients
 
-# Recence moyenne
-average_recence = 0
-average_recence = df_filtred["Recency"].mean()
+    # Recence moyenne
+    average_recence = df_filtred["Recency"].mean()
 
 # Affichage des KPIs
 if not segment_selection :
@@ -91,16 +91,6 @@ else :
     with kpi_col[3] :
         st.metric(label="Recence moyenne", value=f"{average_recence:,.0f} Jours")
 
-# Affichage du dataset =====================
-st.divider()
-st.subheader("Afficher la liste des clients")
-
-with st.expander(label="Liste des clients du segments", icon="👥") :
-    if not segment_selection : 
-        st.dataframe(rfm, use_container_width=True)
-    else : 
-        st.dataframe(df_filtred[['Customer ID', 'Segment', 'Recency', 'Frequency', 'Monetary']], use_container_width=True)
-
 # Graphes et analyses =====================
 st.divider()
 st.subheader("Les graphiques")
@@ -115,7 +105,7 @@ with viz_col[0]:
         x="Segment",
         y="count",
         color="Segment",
-        text="Segment",
+        text="count",
         title="Nombre de clients par segment"
     )
     st.plotly_chart(fig_bar, use_container_width=True)
@@ -133,3 +123,34 @@ with viz_col[1]:
         title="Carte des clusters"
     )
     st.plotly_chart(fig_scatter, use_container_width=True)
+
+# Moteur de recommandation =================
+st.divider()
+st.subheader("💡 Actions Recommandées")
+
+# On regarde quel est le PREMIER segment sélectionné
+if segment_selection:
+    first_segment = segment_selection[0]
+    
+    if "Champions" in first_segment:
+        st.success(f"🌟 **Stratégie pour {first_segment}** : Ne pas faire de promotions agressives ! Proposez-leur un accès VIP ou des avant-premières. Ils achètent déjà au prix fort.")
+    elif "Fidèles" in first_segment or "Loyal" in first_segment:
+        st.info(f"💎 **Stratégie pour {first_segment}** : Faites de l'Up-Selling. Proposez des produits complémentaires pour augmenter leur panier moyen.")
+    elif "Prometteurs" in first_segment or "Nouveaux" in first_segment:
+        st.info(f"🌱 **Stratégie pour {first_segment}** : Créez une habitude d'achat. Offrez une réduction sur le 2ème achat sous 7 jours.")
+    elif "Risque" in first_segment:
+        st.warning(f"⚠️ **Stratégie pour {first_segment}** : URGENCE ! Envoyez un mail personnalisé 'Vous nous manquez' avec une grosse promotion (-20%) pour les réactiver.")
+    elif "Perdus" in first_segment:
+        st.error(f"💤 **Stratégie pour {first_segment}** : Ne gaspillez pas votre budget pub. Tentez une dernière relance automatisée puis ignorez-les.")
+    else:
+        st.write("Sélectionnez un segment unique pour voir la recommandation précise.")
+
+# Affichage du dataset =====================
+st.divider()
+st.subheader("Afficher la liste des clients")
+
+with st.expander(label="Liste des clients du segments", icon="👥") :
+    if not segment_selection : 
+        st.dataframe(rfm, use_container_width=True)
+    else : 
+        st.dataframe(df_filtred[['Customer ID', 'Segment', 'Recency', 'Frequency', 'Monetary']], use_container_width=True)

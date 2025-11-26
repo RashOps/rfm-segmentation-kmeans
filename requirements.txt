@@ -1,11 +1,9 @@
-# --- Data Processing ---
-pandas==2.2.3          
-scikit-learn==1.6.1
-
-# --- Visualization ---
-matplotlib==3.10.0
-seaborn==0.13.2
-plotly==5.24.1
-
-# --- Application ---
+# --- Application Web ---
 streamlit
+pandas
+plotly
+
+# --- Analyse & Data Science ---
+scikit-learn
+matplotlib
+seaborn
