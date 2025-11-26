@@ -1,0 +1,10 @@
+# Fichiers système et IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Python et Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
