@@ -1,57 +1,54 @@
-# 📊 Segmentation Client RFM (Recency, Frequency, Monetary)
+# 📊 Pilote Marketing : Segmentation Clients (RFM & IA)
 
-Ce projet est une application interactive de **Data Science** permettant de segmenter une base de données clients selon la méthode RFM. L'objectif est d'identifier les profils consommateurs pour optimiser les campagnes marketing.
+> **Projet Double Compétence : Business Intelligence & Data Science**
 
-L'application permet de charger des données, de calculer les scores RFM, d'appliquer un clustering (K-Means) et de visualiser les résultats via un dashboard interactif.
+Ce dashboard interactif permet aux responsables marketing de transformer des données transactionnelles brutes en **stratégies d'activation client**. Il s'appuie sur une segmentation RFM (Récence, Fréquence, Montant) propulsée par un algorithme de Machine Learning (**K-Means**).
 
 ---
 
-## 🛠 Tech Stack
+## 🎯 Objectifs du Projet
 
-| Catégorie | Technologies |
+Dans un contexte e-commerce, traiter tous les clients de la même manière est inefficace et coûteux. Ce projet vise à :
+1.  **Segmenter** la base client de manière objective grâce à l'IA.
+2.  **Visualiser** la répartition du chiffre d'affaires et des comportements.
+3.  **Prescrire** des actions concrètes (Retention, Up-sell, Réactivation) via un moteur de recommandation intégré.
+
+---
+
+## 🛠 Stack Technique
+
+| Domaine | Technologies |
 | :--- | :--- |
-| **Data Prep & ML** | [![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=flat&logo=pandas&logoColor=white)](https://pandas.pydata.org/) [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/stable/) |
-| **Visualisation** | [![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=flat&logo=Matplotlib&logoColor=black)](https://matplotlib.org/) [![Seaborn](https://img.shields.io/badge/Seaborn-blue?logo=seaborn&logoColor=white)](https://seaborn.pydata.org/) [![Plotly](https://img.shields.io/badge/Plotly-%233F4F75.svg?style=flat&logo=plotly&logoColor=white)](https://plotly.com/python/) |
-| **Application** | [![Streamlit](https://img.shields.io/badge/Streamlit-%23FF4B4B.svg?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io/) |
+| **Data Processing** | [![Pandas](https://img.shields.io/badge/Pandas-Analyses-150458?logo=pandas)](https://pandas.pydata.org/) |
+| **Machine Learning** | [![Scikit-Learn](https://img.shields.io/badge/Scikit_Learn-K_Means-F7931E?logo=scikit-learn)](https://scikit-learn.org/) |
+| **Visualisation** | [![Plotly](https://img.shields.io/badge/Plotly-Interactif-3F4F75?logo=plotly)](https://plotly.com/) |
+| **Web App** | [![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?logo=streamlit)](https://streamlit.io/) |
 
 ---
 
-## 📸 Démo / Aperçu
+## 🚀 Fonctionnalités Clés
 
-![Dashboard bientôt disponible](https://via.placeholder.com/800x400?text=Capture+d%27%C3%A9cran+de+votre+Dashboard+Streamlit)
+Contrairement aux dashboards classiques, cette application intègre une couche d'intelligence décisionnelle :
 
----
-
-## 🧐 Qu'est-ce que l'analyse RFM ?
-
-L'analyse RFM est une technique marketing basée sur trois critères clés :
-
-* **Récence (Recency) :** Date du dernier achat (plus c'est récent, mieux c'est).
-* **Fréquence (Frequency) :** À quelle fréquence le client achète-t-il ?
-* **Montant (Monetary) :** Combien le client dépense-t-il au total ?
-
-Ce projet utilise **Scikit-Learn** pour automatiser cette segmentation via un algorithme de clustering (ex: K-Means) afin de regrouper les clients en catégories homogènes (ex: *Champions, Clients fidèles, À risque*).
-
----
-
-## 🚀 Fonctionnalités
-
-* 📥 **Upload de données :** Chargement de fichiers CSV/Excel transactionnels.
-* 🧹 **Nettoyage automatique :** Gestion des valeurs manquantes et formatage des dates.
-* 🧮 **Calcul des scores :** Création automatique des variables R, F et M.
-* 🤖 **Clustering ML :** Segmentation non-supervisée (K-Means).
-* 📊 **Visualisation 3D & 2D :** Scatter plots interactifs avec Plotly pour explorer les clusters.
-* 📑 **Export :** Téléchargement des données segmentées au format CSV.
+* **📊 KPIs Dynamiques :** Suivi du Chiffre d'Affaires, Panier Moyen et Récence en temps réel selon les filtres.
+* **🤖 Segmentation IA :** Visualisation des clusters générés par l'algorithme K-Means (Visualisation 2D Récence vs Montant).
+* **💡 Moteur de Recommandation :** Le dashboard analyse le segment sélectionné et affiche une stratégie marketing adaptée (ex: *"Segment À Risque" → "Envoyer promo -20% urgence"*).
+* **👥 Explorateur de Données :** Accès aux listes de clients filtrées pour export et campagne d'emailing.
 
 ---
 
 ## 📂 Structure du Projet
 
-```bash
-├── data/                # Dataset 
-├── images/              # Les images du projets
-├── notebooks/           # Notebooks Jupyter pour l'analyse exploratoire
-├── .gitignore           
-├── app.py               # Point d'entrée de l'application Streamlit
-├── requirements.txt     # Liste des dépendances
-└── README.md            # Documentation du proje
+```text
+Projet_RFM/
+│
+├── data/
+│   ├── online_retail.csv       # Dataset brut (Source)
+│   └── rfm_segmented.csv       # Données traitées avec Clusters (Output du Notebook)
+│
+├── notebooks/
+│   └── analysis.ipynb          # Le Labo : Nettoyage, Feature Engineering (RFM) & K-Means
+│
+├── app.py                      # L'Application : Dashboard Streamlit
+├── requirements.txt            # Dépendances pour le déploiement
+└── README.md                   # Documentation
