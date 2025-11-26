@@ -51,7 +51,7 @@ Ce projet utilise **Scikit-Learn** pour automatiser cette segmentation via un al
 ├── data/                # Dataset 
 ├── images/              # Les images du projets
 ├── notebooks/           # Notebooks Jupyter pour l'analyse exploratoire
-├── src/                 # Scripts de traitement (preprocessing.py, clustering.py)
+├── .gitignore           
 ├── app.py               # Point d'entrée de l'application Streamlit
 ├── requirements.txt     # Liste des dépendances
 └── README.md            # Documentation du proje
