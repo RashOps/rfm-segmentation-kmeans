@@ -4,7 +4,7 @@
 
 Ce dashboard interactif permet aux responsables marketing de transformer des données transactionnelles brutes en **stratégies d'activation client**. Il s'appuie sur une segmentation RFM (Récence, Fréquence, Montant) propulsée par un algorithme de Machine Learning (**K-Means**).
 
-**Voir l'application déployer ici 👇**
+**Voir l'application déployer ici 👉 :**
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/RashOps/rfm-segmentation-kmeans)
 
 ---
